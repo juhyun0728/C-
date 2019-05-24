@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+double poly_area(int *x, int *y, int n){
+  double result=0;
+  x[n]=x[0];
+  y[n]=y[0];
+  for (int i=0; i<n;i++){
+    result += (double)((x[i]+x[i+1]) * (y[i+1]-y[i]))/(double)2;
+    //result += (double)((x[i]*y[i+1])-(y[i]*x[i+1]))/(double)2;
+  }
+  return result;
+}
+int pl_mi(double area){
+  return area > 0 ? 1 : -1;
+}
+int main(){
+  int t;
+  cin>>t;
+  for (int i=0; i<t; i++){
+    int k;
+    cin>>k;
+    int x[k+1], y[k+1];
+    for (int j=0; j<k; j++){
+      cin>>x[j]>>y[j];
+    }
+    double area = poly_area(x,y,k);
+    double result = area > 0 ? 2*area : -2 * area ;
+    cout<<result<<" "<<pl_mi(area)<<endl;
+  }
+  return 0;
+}
