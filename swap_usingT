@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+template <typename T>
+class Swap{
+public:
+  Swap(){ }
+  void doIt(T &a, T &b){
+    T temp = a;
+    a=b;
+    b=temp;
+  }
+};
+
+int main(){
+  Swap<int> a;
+  int i=1, j=2;
+
+  cout<<i<<" "<<j<<endl;
+  a.doIt(i,j);
+  cout<<i<<" "<<j<<endl;
+}
