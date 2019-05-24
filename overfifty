@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+  int t , n;
+  cin >> t;
+
+  for (int i=0;i<t;i++){
+    int totalVote=0;
+    int result=0;
+
+    cin >> n ;
+    int VoteNum[n];
+
+    for (int j=0; j<n;j++){
+      cin>> VoteNum[j];
+      totalVote+=VoteNum[j];
+    }
+    double OverFifty = totalVote / 2. ;
+    for (int j=0; j<n;j++){
+      if (VoteNum[j]>(int)OverFifty){
+        result=j+1;
+        break;
+      }
+    }
+    cout<<result<<endl;
+
+  }
+  return 0;
+}
