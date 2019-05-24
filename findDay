@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+
+int isLeapYear(int year);
+int date(int year, int month);
+int main(){
+  int n;
+  int year, month, day;
+  cin >> n;
+  for (int i=0; i<n;i++){
+    int sum=0;
+    cin>>year>>month>>day;
+    for (int j=1;j<month;j++){
+      sum+=date(year,j);
+    }
+    sum+=day;
+    cout<<sum<<endl;
+  }
+  return 0;
+}
+
+int isLeapYear(int year){
+  if ((year%4==0 && year % 100 !=0) || year%400==0)
+    return 1;
+  return 0;
+}
+int date(int year, int month){
+  int day=0;
+switch (month){
+  case 4:
+  case 6:
+  case 9:
+  case 11: {
+    day = 30;
+    break;
+  }
+  case 2:{
+    if (isLeapYear(year)){
+      day=29;
+      break;
+    }
+    else {
+      day=28;
+      break;
+    }
+  }
+  default : day=31;
+}
+  return day;
+}
