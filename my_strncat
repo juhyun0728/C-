@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+char *my_strncat (char *dest , const char *source , int num);
+int main()
+{
+    char dest[6]="led ";
+    char *p;
+    p = my_strncat(dest,"zepplin",1);
+    cout<<p<<endl;
+}
+char *my_strncat (char *dest , const char *source , int num)
+{
+  int len=0;
+  while (1){
+    if (dest[len]=='\0')
+      break;
+    len++;
+  }
+  for (int i=0; i<num;i++){
+    dest[len+i]=source[i];
+    if (i==num-1)
+      dest[len+i+1]='\0';
+  }
+  return dest;
+}
