@@ -1,0 +1,39 @@
+#include <iostream>
+#include <algorithm>
+#include <set>
+#include <vector>
+
+using namespace std;
+
+void hamming(set<int> &hammingNum, int n){
+  int max = 2147483647;
+  if (hammingNum.find(n) == hammingNum.end()) {
+    hammingNum.insert(n);
+
+    if (n < max/2)
+      hamming(hammingNum, n*2);
+    if (n < max/3)
+      hamming(hammingNum, n*3);
+    if (n < max/5)
+      hamming(hammingNum, n*5);
+  }
+}
+
+int main()
+{
+    int t, k;
+    cin>>t;
+    set<int> hammingNum;
+
+    hamming(hammingNum, 1);
+
+    vector<int> sort(hammingNum.begin(), hammingNum.end());
+
+    for (int i=0;i<t;i++){
+      cin >>k;
+
+      cout<<sort[k-1]<<endl;
+    }
+
+    return 0;
+}
