@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+
+const int SIZE=10;
+void partitionArray(int array[], int size);
+void printArray(int array[], int size);
+
+int main(void){
+  int t;
+  unsigned int size;
+  int array[SIZE];
+
+  cin>>t;
+
+  for (int i=0; i<t; i++){
+    cin>>size;
+    for (int j=0; j<size; j++){
+      cin >> array[j];
+    }
+    partitionArray(array, size);
+    printArray(array,size);
+  }
+  return 0;
+}
+void partitionArray(int array[], int size){
+  int array2[size], count1=0;
+  int array3[size], count2=0;
+  for (int i=0; i<size; i++){
+    if (array[i]%2 !=0){
+      array2[count1]=array[i];
+      count1++;
+    }
+    else {array3[count2]=array[i];
+      count2++;
+    }
+  }
+  for (int i=0; i<count1; i++)
+    array[i] = array2[i];
+  for (int i=0; i<count2; i++)
+    array[count1+i] = array3[i];
+  }
+void printArray(int array[], int size){
+  for (int i=0; i<size; i++)
+    cout<<array[i]<<" ";
+  cout<<endl;
+}
