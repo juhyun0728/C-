@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+
+const int SIZE = 10;
+
+void transposeSquareMatrix (int squareMatrix[][SIZE], int size);
+void printSquareMatrix(int squareMatrix[][SIZE], int size);
+
+int main(void){
+  int t;
+  unsigned int size;
+  int squareMatrix[SIZE][SIZE];
+
+  cin>>t;
+
+  for (int i=0; i<t; i++){
+    cin>>size;
+    for (int j=0; j<size; j++){
+      for (int k=0; k<size; k++){
+        cin>>squareMatrix[j][k];
+      }
+    }
+    transposeSquareMatrix(squareMatrix,size);
+    printSquareMatrix(squareMatrix,size);
+  }
+  return 0;
+}
+void transposeSquareMatrix(int squareMatrix[][SIZE], int size){
+  int temp;
+  for (int i=0; i<size; i++)
+    for (int j=0; j<size; j++){
+      if (i==j){
+
+      }
+      else {
+      temp = squareMatrix[i][j];
+      squareMatrix[i][j] = squareMatrix[j][i];
+      squareMatrix[j][i]=temp;
+      }
+    }
+}
+void printSquareMatrix(int squareMatrix[][SIZE], int size){
+  for (int i=0; i<size; i++){
+    for (int j=0; j<size; j++){
+      cout << squareMatrix[j][i]<<" ";
+    }
+    cout<<endl;
+  }
+}
