@@ -1,0 +1,54 @@
+#ifndef _MY_2Vector_H_
+#define _MY_2Vector_H_
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+class My2Vector{
+public:
+  My2Vector();
+  My2Vector (int coordX, int coordY);
+
+  My2Vector operator +(const My2Vector& v2);
+  friend My2Vector operator *(double a, const My2Vector& v2);
+
+  friend ostream& operator << (ostream& os, const My2Vector& v2);
+private:
+  int x, y;
+};
+#endif
+My2Vector::My2Vector() :x(0), y(0){}
+My2Vector::My2Vector(int coordX, int coordY) : x(coordX), y(coordY){}
+My2Vector My2Vector::operator +(const My2Vector& v2){
+  My2Vector v;
+  v.x = this->x + v2.x;
+  v.y = this->y + v2. y;
+  return v;
+}
+My2Vector operator *(double a, const My2Vector& v2){
+  My2Vector v;
+  v.x = a* v2.x;
+  v.y = a* v2. y;
+  return v;
+}
+
+ostream& operator << (ostream& os, const My2Vector& v){
+  os << "(" <<v.x<<","<<v.y<<")";
+  return os;
+}
+int main(){
+  int numTestCases;
+  cin>>numTestCases;
+  for (int i=0; i<numTestCases; i++){
+    int coordX, coordY;
+
+    cin>>coordX >> coordY;
+    My2Vector v1(coordX, coordY);
+    cin >> coordX >> coordY;
+    My2Vector v2(coordX, coordY);
+
+    cout<<v1<<" "<<v2<<endl;
+    cout<< 2*v1 + 3*v2 <<endl;
+  }
+  return 0;
+}
